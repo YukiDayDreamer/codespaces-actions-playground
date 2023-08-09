@@ -1,6 +1,6 @@
 {
   "name": "codespaces-actions-playground",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Welcome to the GitHub Actions Playground! We've got everything fired up and running for you to explore GitHub Actions.",
   "main": "index.js",
   "scripts": {
