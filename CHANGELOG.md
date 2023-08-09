@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/YukiDayDreamer/codespaces-actions-playground/compare/v1.0.0...v1.1.0) (2023-08-09)
+
+
+### Features
+
+* add update label action ([ebf4785](https://github.com/YukiDayDreamer/codespaces-actions-playground/commit/ebf4785a25ec30d10f604e835076805327028b6a))
+
 ## 1.0.0 (2023-08-09)
 
 
