@@ -1,6 +1,9 @@
 name: Manual Release Please
 
 on:
+  push:
+    branches:
+      - release
   workflow_dispatch: # Allows manual triggering
 
 permissions:
@@ -12,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
+        default-branch: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
