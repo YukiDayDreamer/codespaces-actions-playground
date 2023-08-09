@@ -3,7 +3,7 @@ name: release-please
 on:
   push:
     branches:
-      - release
+      - main
   workflow_dispatch: # Allows manual triggering
 permissions:
   contents: write
