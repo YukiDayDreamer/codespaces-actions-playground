@@ -1,11 +1,10 @@
-name: Manual Release Please
+name: release-please
 
 on:
   push:
     branches:
       - release
   workflow_dispatch: # Allows manual triggering
-
 permissions:
   contents: write
   pull-requests: write
@@ -15,7 +14,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
-        default-branch: release
+        id: release
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
+          package-name: allaihub-api
+          default-branch: release
+          extra-files: |
+            README.md
+            CHANGELOG.md
+
+      - uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+        if: ${{ steps.release.outputs.release_created }}
