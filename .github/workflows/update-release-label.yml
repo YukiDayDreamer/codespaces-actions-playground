@@ -1,0 +1,33 @@
+name: Update Release Label
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  update-label:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check if PR was merged and has the "autorelease pending" label
+      id: check_conditions
+      run: |
+        if [[ "${{ github.event.pull_request.merged }}" == "true" && "${{ github.event.pull_request.labels.*.name }}" =~ "autorelease: pending" ]]; then
+          echo "::set-output name=update_required::true"
+        else
+          echo "::set-output name=update_required::false"
+        fi
+
+    - name: Change label to "autorelease published"
+      if: steps.check_conditions.outputs.update_required == 'true'
+      run: |
+        # Remove the autorelease: pending label
+        curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels/autorelease%3A%20pending"
+        
+        # Add the autorelease: published label
+        curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        -H "Accept: application/vnd.github.v3+json" \
+        -d '{"labels": ["autorelease: published"]}' \
+        "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels"
