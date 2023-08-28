@@ -2,14 +2,14 @@ name: Publish Hotfix
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, closed]
     branches:
       - release
       - release-*
 
 jobs:
   notify-hotfix:
-    if: startsWith(github.event.pull_request.head.ref, 'hotfix-')
+    if: github.event.action == 'opened' && startsWith(github.event.pull_request.head.ref, 'hotfix-')
     runs-on: ubuntu-latest
     steps:
       - name: Post PR comment
