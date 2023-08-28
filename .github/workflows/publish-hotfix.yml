@@ -1,0 +1,30 @@
+name: Publish Hotfix
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - release-*
+
+jobs:
+  notify-hotfix:
+    if: startsWith(github.event.pull_request.head.ref, 'hotfix-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post PR comment
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const issue_number = context.issue.number;
+            const message = "⚠️ **NOTICE:** This is a hotfix PR! Merging this will trigger an automatic deployment to production.";
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number,
+              body: message
+            });
+
+  push-to-production:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'hotfix-')
+    uses: ./.github/workflows/deploy-prod.yml
