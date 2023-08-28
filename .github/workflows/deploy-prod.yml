@@ -1,0 +1,10 @@
+on:
+  workflow_call:
+    
+jobs:
+  notify-hotfix:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Mock Deployment
+        run: |
+          echo "Deployed"
