@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/YukiDayDreamer/codespaces-actions-playground/compare/v1.1.0...v1.2.0) (2023-08-28)
+
+
+### Features
+
+* add hotfix workflows ([7378604](https://github.com/YukiDayDreamer/codespaces-actions-playground/commit/737860486389cb310327fb638b285278dfc0dabe))
+
 ## [1.1.0](https://github.com/YukiDayDreamer/codespaces-actions-playground/compare/v1.0.0...v1.1.0) (2023-08-15)
 
 
