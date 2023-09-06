@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.0](https://github.com/YukiDayDreamer/codespaces-actions-playground/compare/v1.0.0...v1.1.0) (2023-09-06)
+
+
+### Features
+
+* add hotfix workflows ([7378604](https://github.com/YukiDayDreamer/codespaces-actions-playground/commit/737860486389cb310327fb638b285278dfc0dabe))
+* add update label action ([ebf4785](https://github.com/YukiDayDreamer/codespaces-actions-playground/commit/ebf4785a25ec30d10f604e835076805327028b6a))
+* update workflow ([4b23133](https://github.com/YukiDayDreamer/codespaces-actions-playground/commit/4b23133e905c0bc6f1cc97e277d9284dc89529bb))
+
 ## [1.1.0](https://github.com/YukiDayDreamer/codespaces-actions-playground/compare/v1.0.0...v1.1.0) (2023-08-09)
 
 
